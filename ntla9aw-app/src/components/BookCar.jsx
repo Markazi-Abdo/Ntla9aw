@@ -4,18 +4,23 @@ import toast, {Toaster} from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { addBooking } from "../store/RentSlice";
 
-export default function BookCar({ modelName, description, coordinates, photo, userId }) {
+export default function BookCar({ modelName, description, coordinates, photo, userId, carId }) {
   const { isOpen, onOpen, onClose } = useDisclosure(); 
   const dispatch = useDispatch(); 
   const [ carToBook, setCarToBook ] = useState({userId: userId, startDate: "", endDate: "", confirmationDate: ""});
   console.log(typeof carToBook.userId)
   const bookCar = () => {
-    toast.success('Reserved succefsully');
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
-    setCarToBook({...carToBook, confirmationDate: formattedDate});
-    dispatch(addBooking(carToBook));
-    console.log(carToBook)
+    if(userId !== carId){
+        toast.success('Reserved succefsully');
+        const currentDate = new Date();
+        const formatt = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+        setCarToBook({...carToBook, confirmationDate: formatt});
+        dispatch(addBooking(carToBook));
+        console.log(carToBook)
+
+    }else{
+        toast.error('Would you book your own car, stupid');
+    }
   } 
    
   return (
