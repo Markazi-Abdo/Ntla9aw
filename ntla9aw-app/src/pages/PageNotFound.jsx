@@ -15,6 +15,7 @@ export default function PageNotFound() {
                     Go Home
                 </Button>
             </Link>
+            <a href="https://storyset.com/app">App illustrations by Storyset</a>
         </VStack>
     </Container>
   )

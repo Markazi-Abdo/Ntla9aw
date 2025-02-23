@@ -22,6 +22,7 @@ export default function SignUp() {
         <Flex w={"full"} h={"full"}>
             <Box w={"45%"} bg={"green.300"}>
                 <Image src='/carphoto2.svg' w={"full"} h={"100vh"} objectFit={"cover"}/>
+                <a href="https://storyset.com/app">App illustrations by Storyset</a>
             </Box>
             <Box w={"55%"} display={"flex"} justifyContent={"center"} alignItems={"center"}>
                 <Container w={"md"} p={6} alignItems={"center"} borderRadius={"16px"} boxShadow={'dark-lg'}>

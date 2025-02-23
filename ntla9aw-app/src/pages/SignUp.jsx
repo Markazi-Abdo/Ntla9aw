@@ -37,6 +37,7 @@ export default function SignUp() {
                                 NTLA9AW
                             </Heading>
                             <Text fontWeight={"bold"} fontSize={"lg"} color={"whiteAlpha.900"}>Always with you</Text>
+                            <a href="https://storyset.com/app">App illustrations by Storyset</a>
                         </VStack>
                     </Container>
                 </Box>

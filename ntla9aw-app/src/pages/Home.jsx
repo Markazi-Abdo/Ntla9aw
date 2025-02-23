@@ -37,6 +37,7 @@ export default function Home() {
                             Start Now
                         </Button>
                     </Link>
+                    <a href="https://storyset.com/app">App illustrations by Storyset</a>
                 </VStack>
             </Container>
         </Box>
