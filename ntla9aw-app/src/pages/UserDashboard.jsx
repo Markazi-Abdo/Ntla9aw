@@ -13,7 +13,7 @@ export default function UserDashboard() {
   const user = useSelector(state => state.auth.currentUser);
   const cars = useSelector(state => state.products.cars);
   const bookings = useSelector(state => state.books.bookings);
-  const [carToUpdate, setCarToUpdate] = useState({ id: '', modelName: '', description: '', coordinates: {lat: '',lng: ''}});
+  const [carToUpdate, setCarToUpdate] = useState({ id: '', modelName: '', description: '', coordinates: {lat: '',lng: ''}, photo: ""});
   console.log(bookings)
   console.log(cars)
   const {isOpen, onOpen, onClose } = useDisclosure();
@@ -112,6 +112,8 @@ export default function UserDashboard() {
             <Input type='text' value={carToUpdate.modelName} onChange={(e) => setCarToUpdate({ ...carToUpdate, modelName: e.target.value })} />
             <FormLabel>Description</FormLabel>
             <Input type='text' value={carToUpdate.description} onChange={(e) => setCarToUpdate({ ...carToUpdate, description: e.target.value })} />
+            <FormLabel>Photo</FormLabel>
+            <Input type='file' onChange={(e) => setCarToUpdate({ ...carToUpdate, photo: URL.createObjectURL(e.target.files[0]) })} />
             <FormLabel>Coordinates</FormLabel>
             <Input type='text' value={carToUpdate.coordinates.lat} onChange={(e) => setCarToUpdate({ ...carToUpdate, coordinates: {lat: e.target.value} })} />
             <Input type='text' value={carToUpdate.coordinates.lng} onChange={(e) => setCarToUpdate({ ...carToUpdate, coordinates: {lng: e.target.value} })} />

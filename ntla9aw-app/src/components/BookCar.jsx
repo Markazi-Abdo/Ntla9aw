@@ -29,7 +29,7 @@ export default function BookCar({ modelName, description, coordinates, photo, us
     <>
         <Card>
             <CardHeader w={"full"} h={200}>
-                <Image src={photo} objectPosition={"center"} objectFit={'cover'} w={'full'} h={"full"}>
+                <Image src={photo} objectPosition={"center"} objectFit={'cover'}  height={200} width={200}>
                 </Image>
             </CardHeader>
             <CardBody w={"full"}>
