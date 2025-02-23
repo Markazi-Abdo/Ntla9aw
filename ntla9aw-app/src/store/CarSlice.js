@@ -24,7 +24,7 @@ const carSlice = createSlice({
     },
     updateCar: (state, action) =>{
       console.log("Updating car: " + action.payload.id);
-      const updatedTasks = state.cars.map((item, index) => index === action.payload.id ? action.payload.newCar : item);
+      const updatedTasks = state.cars.map(( item ) => item.id === action.payload.id ? {...item, ...action.payload.newCar} : item);
       localStorage.setItem('cars', JSON.stringify(updatedTasks));
       return {...state, cars: updatedTasks}
     },

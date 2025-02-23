@@ -13,7 +13,7 @@ export default function UserDashboard() {
   const user = useSelector(state => state.auth.currentUser);
   const cars = useSelector(state => state.products.cars);
   const bookings = useSelector(state => state.books.bookings);
-  const [carToUpdate, setCarToUpdate] = useState({ id: '', modelName: '', description: ''});
+  const [carToUpdate, setCarToUpdate] = useState({ id: '', modelName: '', description: '', coordinates: {lat: '',lng: ''}});
   console.log(bookings)
   const {isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
@@ -25,11 +25,12 @@ export default function UserDashboard() {
     dispatch(deleteCar(id));
   }
 
-  const handleUpdateCar = () => {
-    dispatch(updateCar(carToUpdate));
+  const handleUpdateCar = (carId) => {
+    dispatch(updateCar({id: carId, newCar: carToUpdate}));
     onClose();
     toast.success("Car updated successfully!");
   }
+
   return (
     <Box minH={'100vh'} w={'full'}>
         <Flex flexDir={'column'} gap={5}>
@@ -64,7 +65,10 @@ export default function UserDashboard() {
                                     <Button colorScheme='red' mt={2} onClick={()=>handleDeleteCar(index)}>
                                         Delete
                                     </Button>
-                                    <Button colorScheme='blue'  mt={2} onClick={onOpen}>
+                                    <Button colorScheme='blue'  mt={2} onClick={()=>{
+                                        onOpen();
+                                        setCarToUpdate(item);
+                                        }}>
                                         Update
                                     </Button>
                                 </Box>
@@ -100,16 +104,19 @@ export default function UserDashboard() {
         <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Update Car Details</ModalHeader>
+          <ModalHeader>Update </ModalHeader>
           <ModalCloseButton />
           <ModalBody textAlign={'center'}>
             <FormLabel>Model Name</FormLabel>
             <Input type='text' value={carToUpdate.modelName} onChange={(e) => setCarToUpdate({ ...carToUpdate, modelName: e.target.value })} />
             <FormLabel>Description</FormLabel>
             <Input type='text' value={carToUpdate.description} onChange={(e) => setCarToUpdate({ ...carToUpdate, description: e.target.value })} />
+            <FormLabel>Coordinates</FormLabel>
+            <Input type='text' value={carToUpdate.coordinates.lat} onChange={(e) => setCarToUpdate({ ...carToUpdate, coordinates: {lat: e.target.value} })} />
+            <Input type='text' value={carToUpdate.coordinates.lng} onChange={(e) => setCarToUpdate({ ...carToUpdate, coordinates: {lng: e.target.value} })} />
           </ModalBody>
           <ModalFooter>
-            <Button w={'full'} colorScheme='blue' onClick={handleUpdateCar}>Update</Button>
+            <Button w={'full'} colorScheme='blue' onClick={()=>handleUpdateCar()}>Update</Button>
           </ModalFooter>
         </ModalContent>
         <Toaster />
