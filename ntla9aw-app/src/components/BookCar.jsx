@@ -3,6 +3,7 @@ import { useState } from "react";
 import toast, {Toaster} from 'react-hot-toast';
 import { useDispatch } from "react-redux";
 import { addBooking } from "../store/RentSlice";
+import { reserveCar } from "../store/CarSlice";
 
 export default function BookCar({ modelName, description, coordinates, photo, userId, carId }) {
   const { isOpen, onOpen, onClose } = useDisclosure(); 
@@ -16,6 +17,7 @@ export default function BookCar({ modelName, description, coordinates, photo, us
         const formatt = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
         setCarToBook({...carToBook, confirmationDate: formatt});
         dispatch(addBooking(carToBook));
+        dispatch(reserveCar(carId));
         console.log(carToBook)
 
     }else{

@@ -22,10 +22,6 @@ const adminSlice = createSlice({
         return { ...state, isAdminAuth: true };
       }
     },
-    adminLogout: (state) => {
-      localStorage.setItem('adminAuthState', JSON.stringify(false));
-      return { ...state, isAdminAuth: false };
-    },
   },
 });
 

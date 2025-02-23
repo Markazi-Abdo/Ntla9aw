@@ -39,5 +39,5 @@ const carSlice = createSlice({
   },
 });
 
-export const { addCarBook, deleteCar, updateCar } = carSlice.actions;
+export const { addCarBook, deleteCar, updateCar, reserveCar } = carSlice.actions;
 export default carSlice.reducer;

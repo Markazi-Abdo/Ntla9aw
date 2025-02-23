@@ -15,6 +15,7 @@ export default function UserDashboard() {
   const bookings = useSelector(state => state.books.bookings);
   const [carToUpdate, setCarToUpdate] = useState({ id: '', modelName: '', description: '', coordinates: {lat: '',lng: ''}});
   console.log(bookings)
+  console.log(cars)
   const {isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const deleteBook = (index) =>{
