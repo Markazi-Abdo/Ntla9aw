@@ -1,6 +1,6 @@
 import { Card, CardBody, CardHeader, Heading, Image, Text } from "@chakra-ui/react";
 
-export default function SingleCar({ modelName, description, coordinates, photo }) {
+export default function SingleCar({ modelName, description, coordinates, photo, price }) {
   return (
     <Card>
         <CardHeader w={"100%"}>
@@ -17,6 +17,9 @@ export default function SingleCar({ modelName, description, coordinates, photo }
             </Text>
             <Text as={'p'}>
                 {coordinates.lat} --- {coordinates.lng}
+            </Text>
+            <Text as={'p'}>
+                {price}
             </Text>
         </CardBody>
     </Card>

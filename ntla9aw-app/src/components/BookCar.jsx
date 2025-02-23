@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addBooking } from "../store/RentSlice";
 import { reserveCar } from "../store/CarSlice";
 
-export default function BookCar({ modelName, description, coordinates, photo, userId, carId }) {
+export default function BookCar({ modelName, description, coordinates, photo, userId, carId, price }) {
   const { isOpen, onOpen, onClose } = useDisclosure(); 
   const dispatch = useDispatch(); 
   const [ carToBook, setCarToBook ] = useState({userId: userId, startDate: "", endDate: "", confirmationDate: ""});
@@ -38,6 +38,9 @@ export default function BookCar({ modelName, description, coordinates, photo, us
                 </Heading>
                 <Text as={'p'}>
                     {description}
+                </Text>
+                <Text as={'p'}>
+                    {price}
                 </Text>
             </CardBody>
             <CardFooter w={"full"}>

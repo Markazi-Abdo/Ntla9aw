@@ -113,7 +113,7 @@ const Map = () => {
               .map((item, index) => (
                 <Marker key={index} position={[parseFloat(item.coordinates.lat), parseFloat(item.coordinates.lng)]}>
                   <Popup>
-                    <BookCar modelName={item.modelName} description={item.description} photo={item.photo} userId={user.id} carId={item.userId}/>
+                    <BookCar modelName={item.modelName} description={item.description} photo={item.photo} price={item.price} userId={user.id} carId={item.userId}/>
                   </Popup>
                 </Marker>
               ))

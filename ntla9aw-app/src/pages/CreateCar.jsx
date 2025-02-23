@@ -7,7 +7,7 @@ import { addCarBook } from '../store/CarSlice';
 
 export default function SignUp() {
   const user = useSelector(state => state.auth.currentUser); 
-  const [ car, setCar ] = useState({userId: user.id, modelName: "", description: "", photo:"" ,coordinates: {lat: '', lng: ''}, isReserved: false})
+  const [ car, setCar ] = useState({userId: user.id, modelName: "", description: "", photo:"" ,coordinates: {lat: '', lng: ''}, isReserved: false, price : ""})
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function SignUp() {
                     <VStack align={'stretch'} spacing={5} alignItems={"center"}>
                         <CarFront size={40}/>
                         <FormControl>
-                            <FormLabel>Model Name:</FormLabel>
+                            <FormLabel>Id for User:</FormLabel>
                             <Input  
                             borderRadius={'16px'}
                             borderColor={"blue.900"}
@@ -88,6 +88,16 @@ export default function SignUp() {
                             fontWeight={"bold"}
                             fontFamily={"monospace"}
                             onChange={(e) => setCar({...car, photo: URL.createObjectURL(e.target.files[0])})}
+                            />
+                            <FormLabel>Car Price for week:</FormLabel>
+                            <Input 
+                            borderRadius={'16px'} 
+                            type='file'
+                            borderColor={"blue.900"}
+                            textAlign={"center"}
+                            fontWeight={"bold"}
+                            fontFamily={"monospace"}
+                            onChange={(e) => setCar({...car, price: Number(e.target.value)})}
                             />
                         </FormControl>
                         <Button 

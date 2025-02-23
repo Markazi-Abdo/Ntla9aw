@@ -62,7 +62,7 @@ export default function UserDashboard() {
                             .filter(item => item.userId === user.id)
                             .map((item, index) => (
                                 <Box key={index}>
-                                    <SingleCar modelName={item.modelName} description={item.description} photo={item.photo} coordinates={item.coordinates}/>
+                                    <SingleCar modelName={item.modelName} price={item.price} description={item.description} photo={item.photo} coordinates={item.coordinates}/>
                                     <Button colorScheme='red' mt={2} onClick={()=>handleDeleteCar(index)}>
                                         Delete
                                     </Button>
