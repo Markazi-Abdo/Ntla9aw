@@ -18,8 +18,9 @@ export default function SignUp() {
     e.preventDefault();
     dispatch(signUp(user))
     toast.success(`${user.username} was created succesfully`);
-    navigate('/login');
+    navigate('/map');
   }
+  
   return (
     <motion.div
     initial={{ opacity: 0, y:"-35%"}}
